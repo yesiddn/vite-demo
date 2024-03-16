@@ -12,6 +12,8 @@ import { setupCounter } from './counter.js'
 // de esta forma solo se importa el objeto user
 import { user } from './data.json'
 
+import suma from './suma.ts' // importacion de typescript -> usa por default la configuracion de vite para importar archivos .ts, pero si se quiere usar una configuracion personalizada, se debe crear un archivo de configuracion de typescript (tsconfig.json) 
+
 // importacion global
 const modules = import.meta.glob('./modules/*.js') // hay que indicar que tipos de archivos se van a importar | devuelve un objeto con las rutas de los archivos
 
@@ -21,6 +23,7 @@ for (const path in modules) {
   }) // tenemos que usar promesas porque como el archivo viene de una importacion dinamica (mediante una url), no sabemos cuando va a estar disponible
 }
 
+console.log(`La suma de 2 + 3 es: ${suma(2, 3)}`)
 
 document.querySelector('#app').innerHTML = `
   <div>
