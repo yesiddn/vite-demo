@@ -1,4 +1,7 @@
 import './style.css' // al estar dentro de main.js que a la vez es el punto de entrada de la aplicación, se importa el archivo de estilos globales
+// importacion de css modules
+import readDocsStyles from './read-docs.module.css'
+
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
@@ -15,10 +18,13 @@ document.querySelector('#app').innerHTML = `
     <div class="card">
       <button id="counter" type="button"></button>
     </div>
-    <p class="read-the-docs">
+    <p class="read-the-docs" id="read-docs">
       Click on the Vite logo to learn more
     </p>
   </div>
 `
+
+document.querySelector('#read-docs').className = readDocsStyles['read-docs'] // tambien se puede acceder con readDocsStyles.readDocs
+// otra forma es con classList: classList.add(readDocsStyles.readDocs)
 
 setupCounter(document.querySelector('#counter'))
