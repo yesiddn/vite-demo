@@ -1,3 +1,7 @@
+/* https: //es.vitejs.dev/guide/features#preprocesadores-css */
+@import './another-styles.scss'; /* de esta forma se puede importar un archivo de preprocesadores, para poder importar archivos de preprocesadores se debe tener instalado el preprocesador en el proyecto, si es sass se instala con npm install -D sass */
+@import './demo.less'; /* less tambien requiere de un preprocesador instalado en el proyecto, se instala con npm install -D less */
+
 body {
   background-color: #e5e5e5;
 }
