@@ -12,6 +12,15 @@ import { setupCounter } from './counter.js'
 // de esta forma solo se importa el objeto user
 import { user } from './data.json'
 
+// importacion global
+const modules = import.meta.glob('./modules/*.js') // hay que indicar que tipos de archivos se van a importar | devuelve un objeto con las rutas de los archivos
+
+for (const path in modules) {
+  modules[path]().then(module => {
+    module.load()
+  }) // tenemos que usar promesas porque como el archivo viene de una importacion dinamica (mediante una url), no sabemos cuando va a estar disponible
+}
+
 
 document.querySelector('#app').innerHTML = `
   <div>
