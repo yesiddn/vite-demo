@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css' // al estar dentro de main.js que a la vez es el punto de entrada de la aplicación, se importa el archivo de estilos globales
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'

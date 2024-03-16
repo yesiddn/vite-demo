@@ -1,3 +1,5 @@
+@import './base.css'; /* De esta forma se puede importar un archivo css */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
