@@ -7,6 +7,12 @@ import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg' // importacion de imagenes
 import { setupCounter } from './counter.js'
 
+// importar json files. Uso: JSON.stringify(data) -> muestra todo el contenido del archivo data.json | JSON.stringify(data.user) -> muestra solo el contenido del objeto user
+// import data from './data.json'
+// de esta forma solo se importa el objeto user
+import { user } from './data.json'
+
+
 document.querySelector('#app').innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -21,6 +27,9 @@ document.querySelector('#app').innerHTML = `
     </div>
     <p class="read-the-docs" id="read-docs">
       Click on the Vite logo to learn more
+    </p>
+    <p class="json-data">
+      ${JSON.stringify(user)} 
     </p>
   </div>
 `
