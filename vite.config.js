@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite' // modulo que permite configurar vite
+import { defineConfig , loadEnv } from 'vite' // modulo que permite configurar vite | loadEnv -> permite cargar variables de entorno
 
 // https://es.vitejs.dev/config/
 // para una configuracion basica, solo se necesita exportar un objeto con la configuracion
@@ -10,13 +10,28 @@ import { defineConfig } from 'vite' // modulo que permite configurar vite
 // }
 
 // para una configuracion mas avanzada, por ejemplo para autocomplete en ts, se puede usar la funcion defineConfig
-export default defineConfig(() => {
+export default defineConfig(({command, mode}) => { // command -> serve o build | mode -> development o production
   const port = 3000
+  
+  console.log(command, mode)
 
-  return {
-    server: {
-      port,
-      open: true,
-    },
+  // el mode es para identificar el archivo .env.development o .env.production
+  const env = loadEnv(mode, process.cwd()) // modo de ejecucion y directorio de trabajo
+  console.log(env)
+
+  if (mode === 'development') {
+    return {
+      server: {
+        port,
+        open: true,
+      },
+    }
+  } else {
+    return {
+      base: '/my-app/',
+      build: {
+        outDir: 'dist',
+      },
+    }
   }
 })
