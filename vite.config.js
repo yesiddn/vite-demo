@@ -1,4 +1,5 @@
-import { defineConfig , loadEnv } from 'vite' // modulo que permite configurar vite | loadEnv -> permite cargar variables de entorno
+import { defineConfig, loadEnv } from 'vite' // modulo que permite configurar vite | loadEnv -> permite cargar variables de entorno
+import { resolve } from 'node:path' // modulo de node.js que permite resolver rutas
 
 // https://es.vitejs.dev/config/
 // para una configuracion basica, solo se necesita exportar un objeto con la configuracion
@@ -10,9 +11,9 @@ import { defineConfig , loadEnv } from 'vite' // modulo que permite configurar v
 // }
 
 // para una configuracion mas avanzada, por ejemplo para autocomplete en ts, se puede usar la funcion defineConfig
-export default defineConfig(({command, mode}) => { // command -> serve o build | mode -> development o production
+export default defineConfig(({ command, mode }) => { // command -> serve o build | mode -> development o production
   const port = 3000
-  
+
   console.log(command, mode)
 
   // el mode es para identificar el archivo .env.development o .env.production
@@ -30,7 +31,14 @@ export default defineConfig(({command, mode}) => { // command -> serve o build |
     return {
       base: '/my-app/',
       build: {
-        outDir: 'dist',
+        // outDir: 'dist',
+        // multi-page app
+        rollupOptions: {
+          input: {
+            main: resolve(__dirname, 'index.html'),
+            help: resolve(__dirname, 'help', 'index.html'),
+          }
+        }
       },
     }
   }
