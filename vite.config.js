@@ -33,11 +33,17 @@ export default defineConfig(({ command, mode }) => { // command -> serve o build
       build: {
         // outDir: 'dist',
         // multi-page app
-        rollupOptions: {
-          input: {
-            main: resolve(__dirname, 'index.html'),
-            help: resolve(__dirname, 'help', 'index.html'),
-          }
+        //   rollupOptions: {
+        //     input: {
+        //       main: resolve(__dirname, 'index.html'),
+        //       help: resolve(__dirname, 'help', 'index.html'),
+        //     }
+        //   }
+
+        lib: {
+          entry: resolve(__dirname, 'lib', 'main.js'),
+          name: 'myLib',
+          fileName: (format) => `my-lib.${format}.js` // my-lib.es.js, my-lib.umd.js, my-lib.cjs.js
         }
       },
     }
